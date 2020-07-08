@@ -9,7 +9,8 @@
 		alpine-lts-12►12/alpine \
 		stretch-slim-lts-8►8/stretch-slim \
 		stretch-slim-lts-10►10/stretch-slim \
-		stretch-slim-lts-12►12/stretch-slim
+		stretch-slim-lts-12►12/stretch-slim \
+		buster-slim-lts-12►12/buster-slim
 
 define run-docker
 	docker build \

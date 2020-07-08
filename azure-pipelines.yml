@@ -45,6 +45,10 @@ jobs:
           imageDockerfilePath: 12/stretch-slim/Dockerfile
           imageName: base/node
           tag: 12-stretch-slim
+        buster-slim-node-12:
+          imageDockerfilePath: 12/buster-slim/Dockerfile
+          imageName: base/node
+          tag: 12-buster-slim
     pool:
       vmImage: $(vmImage)
     steps:

@@ -11,16 +11,14 @@
 - [Building images for sandbox](#building-images-for-sandbox)
 - [License](#license)
 
-## Images list
+## Supported Images list
+
+We recommend that you use the alpine image as it is smaller and most of the time has no vulnerabilities.
 
 | Tag                                                 | OS             | NodeJS version |
 | ----------------------------------------------------| -------------- | -------------- |
-| `hmctspublic.azurecr.io/base/node:8-alpine`         | Alpine         | LTS 8          |
-| `hmctspublic.azurecr.io/base/node:10-alpine`        | Alpine         | LTS 10         |
 | `hmctspublic.azurecr.io/base/node:12-alpine`        | Alpine         | LTS 12         |
-| `hmctspublic.azurecr.io/base/node:8-stretch-slim`   | Debian stretch | LTS 8          |
-| `hmctspublic.azurecr.io/base/node:10-stretch-slim`  | Debian stretch | LTS 10         |
-| `hmctspublic.azurecr.io/base/node:12-stretch-slim`  | Debian stretch | LTS 12         |
+| `hmctspublic.azurecr.io/base/node:12-buster-slim`   | Debian buster  | LTS 12         |
 
 ## Background
 
@@ -44,7 +42,7 @@ _Nota Bene_:
 
 ```Dockerfile
 ### base image ###
-FROM hmctspublic.azurecr.io/base/node:8-stretch-slim as base
+FROM hmctspublic.azurecr.io/base/node:12-alpine as base
 COPY package.json yarn.lock ./
 RUN yarn install
 
@@ -101,7 +99,7 @@ Apk/apt packages installation requires the `root` user so you may switch tempora
 
 ```Dockerfile
 ### build image (Debian) ###
-FROM hmctspublic.azurecr.io/base/node:10-stretch-slim as base
+FROM hmctspublic.azurecr.io/base/node:12-buster-slim as base
 
 USER root
 RUN apt-get update && apt-get install ...
