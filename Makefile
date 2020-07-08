@@ -4,11 +4,7 @@
 .SANDBOX_REGISTRY = hmctssandbox.azurecr.io
 .NAMESPACES	= base/node
 
-.REFS =	alpine-lts-8►8/alpine \
-		alpine-lts-10►10/alpine \
-		alpine-lts-12►12/alpine \
-		stretch-slim-lts-8►8/stretch-slim \
-		stretch-slim-lts-10►10/stretch-slim \
+.REFS =	alpine-lts-12►12/alpine \
 		stretch-slim-lts-12►12/stretch-slim \
 		buster-slim-lts-12►12/buster-slim
 

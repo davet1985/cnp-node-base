@@ -21,26 +21,10 @@ jobs:
   - job: Build
     strategy:
       matrix:
-        alpine-node-8:
-          imageDockerfilePath: 8/alpine/Dockerfile
-          imageName: base/node
-          tag: 8-alpine
-        alpine-node-10:
-          imageDockerfilePath: 10/alpine/Dockerfile
-          imageName: base/node
-          tag: 10-alpine
         alpine-node-12:
           imageDockerfilePath: 12/alpine/Dockerfile
           imageName: base/node
           tag: 12-alpine
-        stretch-slim-node-8:
-          imageDockerfilePath: 8/stretch-slim/Dockerfile
-          imageName: base/node
-          tag: 8-stretch-slim
-        stretch-slim-node-10:
-          imageDockerfilePath: 10/stretch-slim/Dockerfile
-          imageName: base/node
-          tag: 10-stretch-slim
         stretch-slim-node-12:
           imageDockerfilePath: 12/stretch-slim/Dockerfile
           imageName: base/node
@@ -65,21 +49,9 @@ jobs:
     condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master')) # Master branch only
     strategy:
       matrix:
-        alpine-node-8:
-          imageName: base/node
-          tag: 8-alpine
-        alpine-node-10:
-          imageName: base/node
-          tag: 10-alpine
         alpine-node-12:
           imageName: base/node
           tag: 12-alpine
-        stretch-slim-node-8:
-          imageName: base/node
-          tag: 8-stretch-slim
-        stretch-slim-node-10:
-          imageName: base/node
-          tag: 10-stretch-slim
         stretch-slim-node-12:
           imageName: base/node
           tag: 12-stretch-slim
