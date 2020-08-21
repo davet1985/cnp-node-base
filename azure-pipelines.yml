@@ -25,14 +25,18 @@ jobs:
           imageDockerfilePath: 12/alpine/Dockerfile
           imageName: base/node
           tag: 12-alpine
-        stretch-slim-node-12:
-          imageDockerfilePath: 12/stretch-slim/Dockerfile
-          imageName: base/node
-          tag: 12-stretch-slim
         buster-slim-node-12:
           imageDockerfilePath: 12/buster-slim/Dockerfile
           imageName: base/node
           tag: 12-buster-slim
+        alpine-node-14:
+          imageDockerfilePath: 14/alpine/Dockerfile
+          imageName: base/node
+          tag: 14-alpine
+        buster-slim-node-14:
+          imageDockerfilePath: 14/buster-slim/Dockerfile
+          imageName: base/node
+          tag: 14-buster-slim
     pool:
       vmImage: $(vmImage)
     steps:

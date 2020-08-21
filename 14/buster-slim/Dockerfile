@@ -1,4 +1,4 @@
-FROM hmctspublic.azurecr.io/imported/library/node:12-stretch-slim
+FROM hmctspublic.azurecr.io/imported/library/node:14-buster-slim
 
 ENV APP_USER=hmcts \
     WORKDIR=/opt/app
