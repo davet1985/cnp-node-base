@@ -61,10 +61,10 @@ jobs:
           tag: 12-buster-slim
         alpine-node-14:
           imageName: base/node
-          tag: 12-alpine
+          tag: 14-alpine
         buster-slim-node-14:
           imageName: base/node
-          tag: 12-buster-slim
+          tag: 14-buster-slim
     pool:
       vmImage: $(vmImage)
     steps:
