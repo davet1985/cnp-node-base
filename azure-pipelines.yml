@@ -56,10 +56,13 @@ jobs:
         alpine-node-12:
           imageName: base/node
           tag: 12-alpine
-        stretch-slim-node-12:
-          imageName: base/node
-          tag: 12-stretch-slim
         buster-slim-node-12:
+          imageName: base/node
+          tag: 12-buster-slim
+        alpine-node-14:
+          imageName: base/node
+          tag: 12-alpine
+        buster-slim-node-14:
           imageName: base/node
           tag: 12-buster-slim
     pool:
