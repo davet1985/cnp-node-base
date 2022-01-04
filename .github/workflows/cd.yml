@@ -1,0 +1,55 @@
+name: cd
+
+on:
+  push:
+    branches: "master"
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: "0 0 * * Tue"
+
+jobs:
+  main:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ secrets.AZURE_CONTAINER_REGISTRY_URL }}
+          username: ${{ secrets.AZURE_CLIENT_ID }}
+          password: ${{ secrets.AZURE_CLIENT_SECRET }}
+      - name: Build and Push - Node 12 Alpine
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: ./12/alpine
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ secrets.AZURE_CONTAINER_REGISTRY_URL }}/base/node:12-alpine
+      - name: Build and Push - Node 12 Buster Slim
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: ./12/buster-slim
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ secrets.AZURE_CONTAINER_REGISTRY_URL }}/base/node:12-buster-slim
+      - name: Build and Push - Node 14 Alpine
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: ./14/alpine
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ secrets.AZURE_CONTAINER_REGISTRY_URL }}/base/node:14-alpine
+      - name: Build and Push - Node 14 Buster Slim
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: ./14/buster-slim
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ secrets.AZURE_CONTAINER_REGISTRY_URL }}/base/node:14-buster-slim
