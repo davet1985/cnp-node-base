@@ -10,6 +10,10 @@ on:
 jobs:
   main:
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        type: [alpine, buster-slim]
+        node: [12, 14]
     steps:
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -21,35 +25,11 @@ jobs:
           registry: ${{ secrets.AZURE_CONTAINER_REGISTRY_URL }}
           username: ${{ secrets.AZURE_CLIENT_ID }}
           password: ${{ secrets.AZURE_CLIENT_SECRET }}
-      - name: Build and Push - Node 12 Alpine
+      - name: Build and Push - Node ${{ matrix.node }} ${{ matrix.type }}
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: ./12/alpine
+          context: ./${{ matrix.node }}/${{ matrix.type }}
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: ${{ secrets.AZURE_CONTAINER_REGISTRY_URL }}/base/node:12-alpine
-      - name: Build and Push - Node 12 Buster Slim
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          context: ./12/buster-slim
-          push: true
-          platforms: linux/amd64,linux/arm64
-          tags: ${{ secrets.AZURE_CONTAINER_REGISTRY_URL }}/base/node:12-buster-slim
-      - name: Build and Push - Node 14 Alpine
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          context: ./14/alpine
-          push: true
-          platforms: linux/amd64,linux/arm64
-          tags: ${{ secrets.AZURE_CONTAINER_REGISTRY_URL }}/base/node:14-alpine
-      - name: Build and Push - Node 14 Buster Slim
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          context: ./14/buster-slim
-          push: true
-          platforms: linux/amd64,linux/arm64
-          tags: ${{ secrets.AZURE_CONTAINER_REGISTRY_URL }}/base/node:14-buster-slim
+          tags: ${{ secrets.AZURE_CONTAINER_REGISTRY_URL }}/base/node:${{ matrix.node }}-${{ matrix.type }}
