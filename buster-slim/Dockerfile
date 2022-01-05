@@ -1,4 +1,5 @@
-FROM hmctspublic.azurecr.io/imported/library/node:12-buster-slim
+ARG NODE_VERSION=16
+FROM hmctspublic.azurecr.io/imported/library/node:$NODE_VERSION-buster-slim
 
 ENV APP_USER=hmcts \
     WORKDIR=/opt/app

@@ -1,11 +1,12 @@
-FROM hmctspublic.azurecr.io/imported/library/node:14-alpine
+ARG NODE_VERSION=16
+FROM hmctspublic.azurecr.io/imported/library/node:$NODE_VERSION-alpine
 
 ENV APP_USER=hmcts \
   WORKDIR=/opt/app
 
 WORKDIR ${WORKDIR}
 
-RUN apk --no-cache add shadow \
+RUN apk --no-cache add shadow=4.8.1-r1 \
   && userdel node \
   && apk del shadow \
   && addgroup -g 1000 -S $APP_USER \
