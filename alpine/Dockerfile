@@ -1,4 +1,4 @@
-ARG NODE_VERSION
+ARG NODE_VERSION=16
 FROM hmctspublic.azurecr.io/imported/library/node:$NODE_VERSION-alpine
 
 ENV APP_USER=hmcts \
