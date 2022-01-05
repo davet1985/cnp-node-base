@@ -4,9 +4,8 @@
 .SANDBOX_REGISTRY = hmctssandbox.azurecr.io
 .NAMESPACES	= base/node
 
-.REFS =	alpine-lts-12►12/alpine \
-		stretch-slim-lts-12►12/stretch-slim \
-		buster-slim-lts-12►12/buster-slim
+.REFS =	alpine-lts-16►alpine \
+		buster-slim-lts-16►buster-slim
 
 define run-docker
 	docker build \
