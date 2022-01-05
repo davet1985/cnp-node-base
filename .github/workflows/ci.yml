@@ -48,5 +48,5 @@ jobs:
       - name: Test - Node ${{ matrix.node }} ${{ matrix.type }}
         run: |
           chmod +x ./test-build.sh
-          ./test-build.sh ${{ env.AZURE_CONTAINER_REGISTRY_URL }}/base/node:pr-${{ matrix.node }}-${{ matrix.type }} latest
+          ./test-build.sh ${{ env.AZURE_CONTAINER_REGISTRY_URL }}/base/node:pr-${{ matrix.node }}-${{ matrix.type }}
         shell: bash
