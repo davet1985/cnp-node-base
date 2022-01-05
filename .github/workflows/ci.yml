@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Checkout Source
         uses: actions/checkout@v2
-      - name: Hadolint dockerFile
+      - name: Hadolint Dockerfile
         uses: hadolint/hadolint-action@v1.6.0
         with:
           dockerfile: ./${{ matrix.type }}/Dockerfile
