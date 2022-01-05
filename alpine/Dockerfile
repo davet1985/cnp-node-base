@@ -6,7 +6,7 @@ ENV APP_USER=hmcts \
 
 WORKDIR ${WORKDIR}
 
-RUN apk --no-cache add shadow=4.8.1-r1 \
+RUN apk --no-cache add shadow \
   && userdel node \
   && apk del shadow \
   && addgroup -g 1000 -S $APP_USER \
