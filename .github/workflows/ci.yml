@@ -36,6 +36,6 @@ jobs:
         with:
           context: ./${{ matrix.type }}
           platforms: linux/amd64,linux/arm64
-          tags: ${{ env.AZURE_CONTAINER_REGISTRY_URL }}/base/node:${{ matrix.node }}-${{ matrix.type }}
+          tags: ${{ env.AZURE_CONTAINER_REGISTRY_URL }}/base/node:pr-${{ matrix.node }}-${{ matrix.type }}
           build-args: |
             NODE_VERSION=${{ matrix.node }}
