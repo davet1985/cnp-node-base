@@ -35,6 +35,19 @@ jobs:
           registry: ${{ env.AZURE_CONTAINER_REGISTRY_URL }}
           username: ${{ secrets.AZURE_CLIENT_ID }}
           password: ${{ secrets.AZURE_CLIENT_SECRET }}
+      - name: Build Test - Node ${{ matrix.node }} ${{ matrix.type }}
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: ./${{ matrix.type }}
+          load: true
+          tags: ${{ env.AZURE_CONTAINER_REGISTRY_URL }}/base/node:pr-${{ matrix.node }}-${{ matrix.type }}
+          build-args: |
+            NODE_VERSION=${{ matrix.node }}
+      - name: Test - Node ${{ matrix.node }} ${{ matrix.type }}
+        run: |
+          chmod +x ./test-build.sh
+          ./test-build.sh ${{ env.AZURE_CONTAINER_REGISTRY_URL }}/base/node pr-${{ matrix.node }}-${{ matrix.type }}
       - name: Build and Push - Node ${{ matrix.node }} ${{ matrix.type }}
         id: docker_build
         uses: docker/build-push-action@v2
