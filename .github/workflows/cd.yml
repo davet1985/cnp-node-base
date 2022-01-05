@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         type: [alpine, buster-slim]
-        node: [12, 14]
+        node: [12, 14, 16]
     env:
       AZURE_CONTAINER_REGISTRY_URL: tktest.azurecr.io
     steps:
