@@ -1,4 +1,4 @@
-ARG NODE_VERSION=16
+ARG NODE_VERSION=18
 FROM hmctspublic.azurecr.io/imported/library/node:$NODE_VERSION-buster-slim
 
 ENV APP_USER=hmcts \
